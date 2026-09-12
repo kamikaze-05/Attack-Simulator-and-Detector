@@ -1,6 +1,5 @@
 # Attack-Simulator-and-Detector
 
-# AttackSim & Detect
 
 A lightweight, zero-dependency attack simulation and detection engine mapped to **MITRE ATT&CK**. It generates a synthetic Windows Security / Sysmon log stream containing realistic benign activity plus five injected attack techniques, then runs a small rule-based detection engine against that stream to identify each one.
 
