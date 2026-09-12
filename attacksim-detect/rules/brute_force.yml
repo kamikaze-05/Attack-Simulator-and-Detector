@@ -1,0 +1,8 @@
+title: Successful Login Following Brute Force Attempts
+id: T1110.001
+tactic: Credential Access
+severity: high
+description: >
+  Detects five or more failed logon attempts (Event ID 4625) against the same
+  account from the same source IP within 2 minutes, followed by a successful
+  logon (Event ID 4624) from that same source within 5 minutes.

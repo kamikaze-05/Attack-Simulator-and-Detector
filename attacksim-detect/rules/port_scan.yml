@@ -1,0 +1,7 @@
+title: Network Service Discovery (Port Scan)
+id: T1046
+tactic: Discovery
+severity: medium
+description: >
+  Detects a single source IP connecting (Sysmon Event ID 3) to 15 or more
+  distinct destination ports on the same host within a 10-second window.

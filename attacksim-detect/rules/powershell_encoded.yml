@@ -1,0 +1,8 @@
+title: Suspicious Encoded PowerShell Execution
+id: T1059.001
+tactic: Execution
+severity: medium
+description: >
+  Detects PowerShell processes (Sysmon Event ID 1) launched with a
+  base64-encoded command (-enc / -EncodedCommand), a common technique for
+  obfuscating malicious scripts and evading simple keyword filters.

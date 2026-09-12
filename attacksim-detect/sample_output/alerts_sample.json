@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Suspicious Access to LSASS Process",
+    "id": "T1003.001",
+    "tactic": "Credential Access",
+    "severity": "critical",
+    "description": "Detects a non-allowlisted process requesting high-privilege access (Sysmon Event ID 10, GrantedAccess indicating full/read memory rights) to lsass.exe, consistent with credential dumping tools such as Mimikatz or ProcDump misuse.\n",
+    "matched_process": "C:\\Users\\Public\\update.exe",
+    "evidence": "GrantedAccess=0x1410 to lsass.exe from C:\\Users\\Public\\update.exe"
+  },
+  {
+    "title": "Successful Login Following Brute Force Attempts",
+    "id": "T1110.001",
+    "tactic": "Credential Access",
+    "severity": "high",
+    "description": "Detects five or more failed logon attempts (Event ID 4625) against the same account from the same source IP within 2 minutes, followed by a successful logon (Event ID 4624) from that same source within 5 minutes.\n",
+    "matched_account": "s.patel",
+    "matched_src_ip": "203.0.113.44",
+    "evidence": "7 failed logons then a success at 2026-08-20T09:12:52+00:00"
+  },
+  {
+    "title": "Possible Kerberoasting via RC4 TGS Requests",
+    "id": "T1558.003",
+    "tactic": "Credential Access",
+    "severity": "high",
+    "description": "Detects a single account requesting Kerberos service tickets (Event ID 4769) for three or more distinct SPNs within 60 seconds using RC4 encryption (0x17), a strong indicator of an offline Kerberoasting attack.\n",
+    "matched_account": "svc_sql",
+    "evidence": "3 distinct RC4 TGS requests within 60s: ['CIFS/fs01.corp.local', 'HTTP/app02.corp.local', 'MSSQLSvc/db01.corp.local']"
+  },
+  {
+    "title": "Suspicious Encoded PowerShell Execution",
+    "id": "T1059.001",
+    "tactic": "Execution",
+    "severity": "medium",
+    "description": "Detects PowerShell processes (Sysmon Event ID 1) launched with a base64-encoded command (-enc / -EncodedCommand), a common technique for obfuscating malicious scripts and evading simple keyword filters.\n",
+    "matched_user": "a.chen",
+    "evidence": "Encoded command line: powershell.exe -NoP -W Hidden -Enc JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA......"
+  },
+  {
+    "title": "Network Service Discovery (Port Scan)",
+    "id": "T1046",
+    "tactic": "Discovery",
+    "severity": "medium",
+    "description": "Detects a single source IP connecting (Sysmon Event ID 3) to 15 or more distinct destination ports on the same host within a 10-second window.\n",
+    "matched_src_ip": "10.0.1.55",
+    "evidence": "15 distinct destination ports within 10s: [21, 22, 23, 25, 80, 110, 139, 143, 443, 445, 993, 995, 1433, 3306, 3389]"
+  }
+]

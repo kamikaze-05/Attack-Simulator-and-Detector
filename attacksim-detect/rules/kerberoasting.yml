@@ -1,0 +1,8 @@
+title: Possible Kerberoasting via RC4 TGS Requests
+id: T1558.003
+tactic: Credential Access
+severity: high
+description: >
+  Detects a single account requesting Kerberos service tickets (Event ID 4769)
+  for three or more distinct SPNs within 60 seconds using RC4 encryption
+  (0x17), a strong indicator of an offline Kerberoasting attack.

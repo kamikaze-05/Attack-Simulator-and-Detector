@@ -1,0 +1,4 @@
+# No hard dependencies — pure Python 3 standard library.
+# PyYAML is optional: if installed, rule metadata is parsed with it;
+# otherwise a built-in fallback parser is used automatically.
+pyyaml>=6.0
